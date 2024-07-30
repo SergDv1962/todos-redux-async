@@ -7,3 +7,7 @@
 
 # 29.07.24 commit 'training3-todo-redux-async2'
 додав папку api з файлом api.js та виніс туди асінк функціі поки як fetch
+
+# 29.07.24 commit 'training3-todo-redux-async3'
+замість fetch використав бібліотеку axios в файлі api.js. 
+закреслення виконаних туду

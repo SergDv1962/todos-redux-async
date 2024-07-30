@@ -23,7 +23,7 @@ const TodoItem:FC<TodoItemProps> = ({ id, title, completed }) => {
          checked={completed} 
          onChange={() => dispatch(toggleStatus(id))}
       />
-      <span>{title}</span>
+      <span style={completed ? {textDecoration: 'line-through'} : {textDecoration: 'none'}}>{title}</span>
       <button onClick={handleEdit}>edit</button>
       <button onClick={() => dispatch(deleteTodo(id))}>delete</button>
     </div>
