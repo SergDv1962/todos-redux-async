@@ -1,26 +1,33 @@
-import { useAppDispatch } from '../hook';
-import {toggleStatus, deleteTodo } from '../store/todoSlice';
+import React, { FC } from 'react'
+import { useAppDispatch } from '../hooks';
+import { deleteTodo, getIdEditTodo, reducerIsEdit, toggleStatus } from '../redux/todoSlice';
 
 interface TodoItemProps {
-  id: string,
-  title: string,
-  completed: boolean,
+   id: string;
+   title: string;
+   completed: boolean;
 }
 
-const TodoItem: React.FC<TodoItemProps> = ({ id, title, completed }) => {
-  const dispatch = useAppDispatch();
+const TodoItem:FC<TodoItemProps> = ({ id, title, completed }) => {
+   const dispatch = useAppDispatch();
 
+   const handleEdit = () => {
+    dispatch(getIdEditTodo(id))
+    dispatch(reducerIsEdit(true))
+   }
+   
   return (
-    <li>
-      <input
-        type='checkbox'
-        checked={completed}
-        onChange={() => dispatch(toggleStatus(id))}
+    <div>
+      <input 
+         type='checkbox' 
+         checked={completed} 
+         onChange={() => dispatch(toggleStatus(id))}
       />
       <span>{title}</span>
-      <span onClick={() => dispatch(deleteTodo(id))}>&times;</span>
-    </li>
-  );
-};
+      <button onClick={handleEdit}>edit</button>
+      <button onClick={() => dispatch(deleteTodo(id))}>delete</button>
+    </div>
+  )
+}
 
-export default TodoItem;
+export default TodoItem

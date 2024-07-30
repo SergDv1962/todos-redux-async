@@ -1,15 +1,16 @@
-import React from 'react';
-import { useAppSelector } from '../hook';
-import TodoItem from './TodoItem';
+import React from 'react'
+import { useAppSelector } from '../hooks'
+import TodoItem from './TodoItem'
 
-const TodoList: React.FC = () => {
-    const todos = useAppSelector(state => state.todos.list);
+const TodoList = () => {
+   const todos = useAppSelector(state => state.todos.list)
+
 
   return (
-    <ul>
-      {todos.map((todo) => <TodoItem key={todo.id} {...todo}/>)}
-    </ul>
-  );
-};
+    <div>
+      {todos.map(todo => <TodoItem key={todo.id} {...todo}/>)}
+    </div>
+  )
+}
 
-export default TodoList;
+export default TodoList
